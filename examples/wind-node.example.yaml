@@ -1,0 +1,70 @@
+schema_version: "0.1.0"
+
+node_id: "spark-node-01"
+node_type: "local_ai_compute_node"
+compute_class: "high_local_inference"
+circulation_role: "compute_lung"
+
+thermal_profile:
+  thermal_state: "stable"
+  sustained_load_limit: "medium_high"
+  burst_allowed: true
+  cooldown_required_after_burst: true
+  notes:
+    - "Designed for sustained local inference with limited burst reasoning."
+    - "Thermal behavior should be monitored during deep reasoning tasks."
+
+airflow_profile:
+  chamber_type: "quiet_airflow_chamber"
+  intake_path: "front_low"
+  exhaust_path: "rear_high"
+  turbulence_risk: "low"
+  airflow_notes:
+    - "Airflow path is designed to reduce turbulence and acoustic pressure."
+    - "Cable obstruction should be minimized to preserve quiet circulation."
+
+acoustic_profile:
+  acoustic_state: "quiet"
+  noise_sensitivity: "high"
+  vibration_risk: "low"
+  acoustic_notes:
+    - "Quiet operation is preferred over maximum sustained output."
+    - "Rising acoustic pressure should be treated as a circulation signal."
+
+cooling_method:
+  type: "hybrid_airflow"
+  silent_pressure_support: true
+  passive_assist: true
+  maintenance_level: "low"
+
+power_path:
+  source: "local_ac_power"
+  backup: "battery_supported"
+  power_stability: "stable"
+  low_power_mode_supported: true
+
+local_memory_link:
+  type: "local_unified_memory"
+  memory_role: "inference_context"
+  memory_notes:
+    - "Local memory is used to reduce unnecessary data movement."
+    - "Inference context should remain close to the compute organ when possible."
+
+network_link:
+  primary: "local_high_speed_network"
+  fallback: "cloud_gateway"
+  local_first_preferred: true
+
+lifecycle_state: "available"
+
+circulation_policy:
+  prefer_quiet_operation: true
+  prefer_local_execution: true
+  allow_burst_execution: true
+  require_cooldown_after_burst: true
+  escalate_when_strained: true
+
+notes:
+  - "This Wind Node represents a local AI compute organ within Earth Brain OS."
+  - "It should run tasks locally when thermal, acoustic, and power conditions are stable."
+  - "If the node becomes strained, the Optical Nervous Layer should route work to another available node."
