@@ -1,0 +1,436 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/earth-brain-physical-circulation/schemas/wind-node.schema.json",
+  "title": "Wind Node Schema",
+  "description": "A schema for describing a Wind Node in the Physical Circulation Layer of Earth Brain OS.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "node_id",
+    "node_type",
+    "compute_class",
+    "circulation_role",
+    "thermal_profile",
+    "airflow_profile",
+    "acoustic_profile",
+    "cooling_method",
+    "power_path",
+    "local_memory_link",
+    "network_link",
+    "lifecycle_state"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Version of this schema used by the Wind Node record.",
+      "default": "0.1.0"
+    },
+    "node_id": {
+      "type": "string",
+      "description": "Unique identifier for the Wind Node.",
+      "minLength": 1,
+      "examples": [
+        "spark-node-01",
+        "ventiva-mini-node-01",
+        "silencio-chamber-01"
+      ]
+    },
+    "node_type": {
+      "type": "string",
+      "description": "Type of physical AI node.",
+      "enum": [
+        "local_ai_compute_node",
+        "edge_ai_node",
+        "quiet_inference_node",
+        "thermal_aware_workstation",
+        "battery_backed_endpoint",
+        "hybrid_wind_optical_node"
+      ]
+    },
+    "compute_class": {
+      "type": "string",
+      "description": "Compute capability class of the node.",
+      "enum": [
+        "low_power_inference",
+        "standard_local_inference",
+        "high_local_inference",
+        "burst_reasoning",
+        "edge_coordination",
+        "memory_assisted_compute"
+      ]
+    },
+    "circulation_role": {
+      "type": "string",
+      "description": "Primary organ role of the node in the Wind Circulation Layer.",
+      "enum": [
+        "compute_lung",
+        "cognitive_muscle",
+        "silent_pressure_organ",
+        "circulation_chamber",
+        "power_meridian",
+        "stable_peripheral_cell",
+        "hybrid_circulation_organ"
+      ]
+    },
+    "thermal_profile": {
+      "type": "object",
+      "description": "Thermal condition and limits of the Wind Node.",
+      "additionalProperties": false,
+      "required": [
+        "thermal_state",
+        "sustained_load_limit",
+        "burst_allowed",
+        "cooldown_required_after_burst"
+      ],
+      "properties": {
+        "thermal_state": {
+          "type": "string",
+          "enum": [
+            "cool",
+            "stable",
+            "warm",
+            "hot",
+            "strained",
+            "critical"
+          ]
+        },
+        "sustained_load_limit": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "medium_high",
+            "high",
+            "burst_only"
+          ]
+        },
+        "burst_allowed": {
+          "type": "boolean"
+        },
+        "cooldown_required_after_burst": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "airflow_profile": {
+      "type": "object",
+      "description": "Airflow and chamber properties of the Wind Node.",
+      "additionalProperties": false,
+      "required": [
+        "chamber_type",
+        "intake_path",
+        "exhaust_path",
+        "turbulence_risk"
+      ],
+      "properties": {
+        "chamber_type": {
+          "type": "string",
+          "enum": [
+            "open_air",
+            "compact_chamber",
+            "quiet_airflow_chamber",
+            "high_pressure_chamber",
+            "passive_assist_chamber",
+            "custom_airflow_chamber"
+          ]
+        },
+        "intake_path": {
+          "type": "string",
+          "description": "Primary air intake path.",
+          "examples": [
+            "front_low",
+            "side_panel",
+            "bottom",
+            "distributed"
+          ]
+        },
+        "exhaust_path": {
+          "type": "string",
+          "description": "Primary air exhaust path.",
+          "examples": [
+            "rear_high",
+            "top",
+            "rear",
+            "distributed"
+          ]
+        },
+        "turbulence_risk": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "airflow_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "acoustic_profile": {
+      "type": "object",
+      "description": "Noise, vibration, and acoustic behavior of the Wind Node.",
+      "additionalProperties": false,
+      "required": [
+        "acoustic_state",
+        "noise_sensitivity",
+        "vibration_risk"
+      ],
+      "properties": {
+        "acoustic_state": {
+          "type": "string",
+          "enum": [
+            "silent",
+            "quiet",
+            "moderate",
+            "loud",
+            "strained",
+            "unknown"
+          ]
+        },
+        "noise_sensitivity": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "vibration_risk": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "acoustic_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cooling_method": {
+      "type": "object",
+      "description": "Cooling method and silent pressure support available to the node.",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "silent_pressure_support",
+        "passive_assist"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "passive",
+            "active_airflow",
+            "hybrid_airflow",
+            "silent_pressure",
+            "liquid_assisted",
+            "external_cooling",
+            "unknown"
+          ]
+        },
+        "silent_pressure_support": {
+          "type": "boolean"
+        },
+        "passive_assist": {
+          "type": "boolean"
+        },
+        "maintenance_level": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "power_path": {
+      "type": "object",
+      "description": "Power delivery and backup properties of the Wind Node.",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "backup",
+        "power_stability"
+      ],
+      "properties": {
+        "source": {
+          "type": "string",
+          "enum": [
+            "local_ac_power",
+            "usb_c_power",
+            "battery",
+            "hybrid_power",
+            "poe",
+            "external_power_supply",
+            "unknown"
+          ]
+        },
+        "backup": {
+          "type": "string",
+          "enum": [
+            "none",
+            "battery_supported",
+            "ups_supported",
+            "dual_path_supported",
+            "unknown"
+          ]
+        },
+        "power_stability": {
+          "type": "string",
+          "enum": [
+            "stable",
+            "variable",
+            "limited",
+            "unstable",
+            "unknown"
+          ]
+        },
+        "low_power_mode_supported": {
+          "type": "boolean"
+        }
+      }
+    },
+    "local_memory_link": {
+      "type": "object",
+      "description": "Local memory or storage relationship used by the Wind Node.",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "memory_role"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "local_unified_memory",
+            "local_storage",
+            "nas_linked_memory",
+            "external_memory_node",
+            "hybrid_memory",
+            "none",
+            "unknown"
+          ]
+        },
+        "memory_role": {
+          "type": "string",
+          "enum": [
+            "inference_context",
+            "model_storage",
+            "trace_storage",
+            "temporary_cache",
+            "coordination_memory",
+            "none",
+            "unknown"
+          ]
+        },
+        "memory_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "network_link": {
+      "type": "object",
+      "description": "Network path used by the Wind Node to connect with the Optical Nervous Layer.",
+      "additionalProperties": false,
+      "required": [
+        "primary",
+        "fallback"
+      ],
+      "properties": {
+        "primary": {
+          "type": "string",
+          "enum": [
+            "local_high_speed_network",
+            "wifi_7",
+            "ethernet_10gbe",
+            "usb4_direct",
+            "optical_network",
+            "edge_router",
+            "none",
+            "unknown"
+          ]
+        },
+        "fallback": {
+          "type": "string",
+          "enum": [
+            "cloud_gateway",
+            "local_router",
+            "nas_node",
+            "secondary_network",
+            "none",
+            "unknown"
+          ]
+        },
+        "local_first_preferred": {
+          "type": "boolean"
+        }
+      }
+    },
+    "lifecycle_state": {
+      "type": "string",
+      "description": "Current lifecycle state of the Wind Node.",
+      "enum": [
+        "registered",
+        "idle",
+        "available",
+        "active",
+        "strained",
+        "cooling",
+        "resting",
+        "degraded",
+        "offline"
+      ]
+    },
+    "circulation_policy": {
+      "type": "object",
+      "description": "Optional policy for deciding how the node should regulate workload, heat, noise, and rest.",
+      "additionalProperties": false,
+      "properties": {
+        "prefer_quiet_operation": {
+          "type": "boolean"
+        },
+        "prefer_local_execution": {
+          "type": "boolean"
+        },
+        "allow_burst_execution": {
+          "type": "boolean"
+        },
+        "require_cooldown_after_burst": {
+          "type": "boolean"
+        },
+        "escalate_when_strained": {
+          "type": "boolean"
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "description": "Human-readable notes about the Wind Node.",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
