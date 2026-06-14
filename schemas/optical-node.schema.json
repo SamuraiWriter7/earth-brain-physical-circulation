@@ -1,4 +1,3 @@
-```json
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/SamuraiWriter7/earth-brain-physical-circulation/schemas/optical-node.schema.json",
@@ -455,4 +454,3 @@
     }
   }
 }
-```
