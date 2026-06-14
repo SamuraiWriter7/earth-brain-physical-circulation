@@ -11,40 +11,39 @@ start_state: "available"
 end_state: "cooling"
 
 wind_state:
-thermal_change: "moderate_increase"
-acoustic_change: "low"
-power_change: "stable"
-airflow_change: "stable"
-cooling_action: "cooldown_started"
+  thermal_change: "moderate_increase"
+  acoustic_change: "low"
+  power_change: "stable"
+  airflow_change: "stable"
+  cooling_action: "cooldown_started"
 
 optical_route:
-selected_route: "local_execution"
-source_route_node: "hybrid-ai-workstation-01"
-destination_route_node: "hybrid-ai-workstation-01"
-latency_class: "low"
-bandwidth_class: "high"
-fallback_used: false
-cloud_escalated: false
+  selected_route: "local_execution"
+  source_route_node: "hybrid-ai-workstation-01"
+  destination_route_node: "hybrid-ai-workstation-01"
+  latency_class: "low"
+  bandwidth_class: "high"
+  fallback_used: false
+  cloud_escalated: false
 
 memory_path:
-memory_node_id: "nas-memory-01"
-memory_role: "coordination_memory"
-remote_memory_used: false
-memory_privacy_boundary: "trusted_local_network"
+  memory_node_id: "nas-memory-01"
+  memory_role: "coordination_memory"
+  remote_memory_used: false
+  memory_privacy_boundary: "trusted_local_network"
 
 fallback_used: false
 cloud_escalated: false
 rest_required: true
 
 rest_recovery:
-rest_trigger: "burst_execution"
-recovery_action: "cooldown"
-future_routing_recommendation: "prefer_lighter_tasks"
+  rest_trigger: "burst_execution"
+  recovery_action: "cooldown"
+  future_routing_recommendation: "prefer_lighter_tasks"
 
 outcome: "local_execution_completed"
 
 learning_signal:
-local_first_success: true
-future_depth_adjustment: "require_cooldown"
-future_route_adjustment: "prefer_same_route"
-
+  local_first_success: true
+  future_depth_adjustment: "require_cooldown"
+  future_route_adjustment: "prefer_same_route"
