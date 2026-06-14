@@ -1,6 +1,6 @@
 # Earth Brain Physical Circulation
 
-**Wind Circulation and Physical Infrastructure Architecture for Earth Brain OS**
+**Wind Circulation and Optical Nervous Architecture for Earth Brain OS**
 
 This repository defines the physical circulation layer for **Earth Brain OS**.
 
@@ -13,12 +13,13 @@ It describes how local AI nodes can operate as sustainable physical organs by co
 * cooling method
 * power routing
 * local memory
-* network connection
+* local-first networking
+* optical nervous coordination
 * rest and recovery cycles
 
 The goal is not simply to maximize computation.
 
-The goal is to allow AI infrastructure to breathe.
+The goal is to allow AI infrastructure to breathe, connect, and sustain itself as a physical body.
 
 ---
 
@@ -45,6 +46,12 @@ Power path
 
 Network path
 = nervous connection
+
+Memory node
+= memory nucleus
+
+AI router
+= local nervous ganglion
 ```
 
 In short:
@@ -71,7 +78,12 @@ Wind Circulation Layer
 Physical Compute Substrate
 ```
 
-The current `v0.1.0-candidate` focuses mainly on the **Wind Circulation Layer**.
+The current `v0.2.0-candidate` defines two major physical layers:
+
+* **Wind Circulation Layer**
+* **Optical Nervous Layer**
+
+Together, these layers describe how Earth Brain OS can become a physically sustainable, local-first, distributed AI body.
 
 ---
 
@@ -109,9 +121,96 @@ Can this node compute without damaging its own circulation?
 
 ---
 
+## Optical Nervous Layer
+
+The **Optical Nervous Layer** regulates signal flow between local AI nodes, routers, memory nodes, edge devices, and cloud interfaces.
+
+It coordinates:
+
+* node-to-node communication
+* local-first routing
+* low-latency communication
+* memory access
+* edge coordination
+* task routing
+* signal prioritization
+* fallback routing
+* cloud escalation
+* nervous trace logging
+
+Its core principle is:
+
+> shortest suitable path over maximum data movement.
+
+An optical-aware system does not only ask:
+
+```text
+Can this network transfer data?
+```
+
+It also asks:
+
+```text
+Should this data move at all?
+```
+
+and:
+
+```text
+Where is the nearest suitable intelligence?
+```
+
+The Optical Nervous Layer prevents Earth Brain OS from becoming unnecessarily centralized, noisy, expensive, and brittle.
+
+---
+
+## Relationship Between Wind and Optical Layers
+
+The two layers are distinct but interdependent.
+
+```text
+Wind Circulation Layer
+= internal breathing and physical stability
+
+Optical Nervous Layer
+= external connection and signal coordination
+```
+
+Wind answers:
+
+```text
+Can this node breathe?
+```
+
+Optical answers:
+
+```text
+Should the signal go there?
+```
+
+Together, they form the first physical body model of Earth Brain OS.
+
+```text
+Wind
+= breath, heat, airflow, sound, power
+
+Optical
+= signal, memory, connection, routing, coordination
+```
+
+Without wind, intelligence overheats.
+
+Without optical nerves, intelligence fragments.
+
+Without local-first routing, intelligence becomes centralized, expensive, and brittle.
+
+---
+
 ## Organ Model
 
-The Wind Circulation Layer describes physical infrastructure using an organ-based model.
+This repository describes physical infrastructure using an organ-based model.
+
+### Wind Organs
 
 | Organ                  | Meaning                                            |
 | ---------------------- | -------------------------------------------------- |
@@ -122,7 +221,18 @@ The Wind Circulation Layer describes physical infrastructure using an organ-base
 | Power Meridian         | Energy delivery and stabilization path             |
 | Stable Peripheral Cell | Low-power or battery-backed edge node              |
 
-This model allows physical AI infrastructure to be described as a living circulation system rather than a collection of disconnected devices.
+### Optical Organs
+
+| Organ                        | Meaning                                              |
+| ---------------------------- | ---------------------------------------------------- |
+| Local Nervous Ganglion       | AI router or local coordination node                 |
+| Optical Nerve Bundle         | High-speed communication path                        |
+| Memory Nucleus               | NAS, trace store, model cache, or shared memory node |
+| Peripheral Intelligence Node | Edge-side sensing or inference node                  |
+| Execution Organ              | Local AI compute node selected for task execution    |
+| Cloud Interface Organ        | Gateway to external cloud infrastructure             |
+
+This model allows AI infrastructure to be described as a living circulation and nervous system rather than a collection of disconnected devices.
 
 ---
 
@@ -131,13 +241,17 @@ This model allows physical AI infrastructure to be described as a living circula
 ```text
 .
 ├── README.md
+├── CHANGELOG.md
 ├── docs/
 │   ├── physical-circulation-overview.md
-│   └── wind-circulation-layer.md
+│   ├── wind-circulation-layer.md
+│   └── optical-nervous-layer.md
 ├── schemas/
-│   └── wind-node.schema.json
+│   ├── wind-node.schema.json
+│   └── optical-node.schema.json
 ├── examples/
-│   └── wind-node.example.yaml
+│   ├── wind-node.example.yaml
+│   └── optical-node.example.yaml
 ├── scripts/
 │   └── validate_examples.py
 └── .github/
@@ -159,7 +273,7 @@ It defines the relationship between:
 * Optical Nervous Layer
 * Physical Compute Substrate
 * local AI nodes
-* power, thermal, acoustic, and network circulation
+* power, thermal, acoustic, memory, and network circulation
 
 ### `docs/wind-circulation-layer.md`
 
@@ -176,9 +290,25 @@ It defines:
 * rest and recovery
 * Wind Node lifecycle states
 
+### `docs/optical-nervous-layer.md`
+
+Detailed specification of the Optical Nervous Layer.
+
+It defines:
+
+* local-first routing
+* optical nervous coordination
+* node discovery
+* signal prioritization
+* memory access coordination
+* task routing
+* fallback and escalation
+* nervous trace logging
+* Optical Node lifecycle states
+
 ---
 
-## Schema
+## Schemas
 
 ### `schemas/wind-node.schema.json`
 
@@ -199,9 +329,27 @@ A Wind Node is a physical AI node described by:
 * lifecycle state
 * circulation policy
 
+### `schemas/optical-node.schema.json`
+
+JSON Schema for describing an **Optical Node**.
+
+An Optical Node is a routing, memory, or coordination node described by:
+
+* node identity
+* nervous role
+* connection profile
+* latency profile
+* bandwidth profile
+* routing policy
+* memory access
+* Wind Node links
+* fallback paths
+* lifecycle state
+* nervous trace policy
+
 ---
 
-## Example
+## Examples
 
 ### `examples/wind-node.example.yaml`
 
@@ -215,6 +363,19 @@ It represents a local AI compute node that prefers:
 * acoustic awareness
 * burst execution with cooldown
 * escalation when strained
+
+### `examples/optical-node.example.yaml`
+
+Example Optical Node record.
+
+It represents a local AI router that coordinates nearby Wind Nodes through:
+
+* local-first routing
+* memory-near-compute preference
+* Wind Circulation state awareness
+* fallback routing
+* cloud escalation only when needed
+* nervous trace logging
 
 ---
 
@@ -259,25 +420,31 @@ It runs on:
 The workflow checks:
 
 * Python syntax
-* example YAML validation against JSON Schema
+* Wind Node example validation against JSON Schema
+* Optical Node example validation against JSON Schema
 
 ---
 
 ## Current Version
 
 ```text
-v0.1.0-candidate
-Physical Circulation Layer for Earth Brain OS
+v0.2.0-candidate
+Optical Nervous Architecture
 ```
 
 This version introduces:
 
-* Physical Circulation overview
-* Wind Circulation Layer documentation
-* Wind Node JSON Schema
-* Wind Node YAML example
-* validation script
-* GitHub Actions workflow
+* Optical Nervous Layer documentation
+* Optical Node JSON Schema
+* Optical Node YAML example
+* validation support for both Wind Node and Optical Node examples
+
+It builds on:
+
+```text
+v0.1.0-candidate
+Physical Circulation Layer for Earth Brain OS
+```
 
 ---
 
@@ -313,6 +480,18 @@ Local AI is only sustainable if local nodes can physically breathe.
 
 The path of air belongs in the specification.
 
+### 8. Shortest Suitable Path
+
+The system should prefer the nearest appropriate route, not the largest route.
+
+### 9. Local First, Not Local Only
+
+Local nodes should be preferred when sustainable, but escalation remains possible.
+
+### 10. Every Route Leaves a Trace
+
+Routing decisions should be observable, traceable, and learnable.
+
 ---
 
 ## Non-Goals
@@ -325,9 +504,11 @@ This repository does not define:
 * commercial cooling benchmarks
 * complete mechanical engineering specifications
 * a full data center HVAC standard
+* complete telecom standards
+* a replacement for existing internet protocols
 * a replacement for Earth Brain OS core schemas
 
-Instead, it defines a structural vocabulary for describing physical circulation in AI civilization systems.
+Instead, it defines a structural vocabulary for describing physical circulation and optical nervous coordination in AI civilization systems.
 
 ---
 
@@ -335,13 +516,13 @@ Instead, it defines a structural vocabulary for describing physical circulation 
 
 Possible next versions may add:
 
-* Optical Nervous Layer specification
-* Optical Node schema
-* Optical Node example
 * Hybrid Wind/Optical Node model
-* physical circulation outcome logs
+* circulation outcome logs
+* nervous routing outcome logs
 * thermal-acoustic routing policies
+* breathing reasoning node profiles
 * Earth Brain OS integration records
+* physical circulation event schemas
 
 ---
 
@@ -353,13 +534,16 @@ Physical Circulation Architecture adds another question:
 
 > Can the system breathe?
 
+Optical Nervous Architecture adds one more:
+
+> Can the system coordinate without unnecessary centralization?
+
 A system that cannot breathe becomes hot, loud, expensive, centralized, and brittle.
 
-A system that can breathe becomes quiet, local, modular, resilient, and sustainable.
+A system that can breathe and coordinate becomes quiet, local, modular, resilient, and sustainable.
 
 Earth Brain OS is not only an intelligence architecture.
 
 It is a body.
 
-And every body needs circulation.
-
+And every body needs circulation and nerves.
