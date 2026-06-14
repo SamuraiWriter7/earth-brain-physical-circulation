@@ -92,7 +92,7 @@ trace_notes:
 lifecycle_state: "available"
 
 notes:
+  - "This Hybrid Node represents a local AI workstation that combines Wind and Optical responsibilities."
+  - "It can execute local inference, coordinate nearby nodes, access nearby memory, and escalate only when needed."
+  - "It should route only what the body can sustain."
 
-* "This Hybrid Node represents a local AI workstation that combines Wind and Optical responsibilities."
-* "It can execute local inference, coordinate nearby nodes, access nearby memory, and escalate only when needed."
-* "It should route only what the body can sustain."
