@@ -1,0 +1,458 @@
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/earth-brain-physical-circulation/schemas/optical-node.schema.json",
+  "title": "Optical Node Schema",
+  "description": "A schema for describing an Optical Node in the Optical Nervous Layer of Earth Brain OS.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "node_id",
+    "node_type",
+    "nervous_role",
+    "connection_profile",
+    "latency_profile",
+    "bandwidth_profile",
+    "routing_policy",
+    "memory_access",
+    "wind_node_links",
+    "fallback_paths",
+    "lifecycle_state"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Version of this schema used by the Optical Node record.",
+      "const": "0.2.0"
+    },
+    "node_id": {
+      "type": "string",
+      "description": "Unique identifier for the Optical Node.",
+      "minLength": 1,
+      "examples": [
+        "ai-router-01",
+        "nas-memory-01",
+        "optical-gateway-01"
+      ]
+    },
+    "node_type": {
+      "type": "string",
+      "description": "Type of optical or nervous coordination node.",
+      "enum": [
+        "ai_router",
+        "edge_router",
+        "local_network_controller",
+        "nas_memory_node",
+        "optical_gateway",
+        "cloud_gateway",
+        "edge_coordination_node",
+        "hybrid_wind_optical_node"
+      ]
+    },
+    "nervous_role": {
+      "type": "string",
+      "description": "Primary organ role of the node in the Optical Nervous Layer.",
+      "enum": [
+        "local_nervous_ganglion",
+        "optical_nerve_bundle",
+        "memory_nucleus",
+        "peripheral_intelligence_node",
+        "execution_organ",
+        "cloud_interface_organ",
+        "hybrid_nervous_organ"
+      ]
+    },
+    "connection_profile": {
+      "type": "object",
+      "description": "Connection properties of the Optical Node.",
+      "additionalProperties": false,
+      "required": [
+        "primary_connection",
+        "secondary_connection",
+        "optical_path_supported",
+        "local_discovery_supported"
+      ],
+      "properties": {
+        "primary_connection": {
+          "type": "string",
+          "enum": [
+            "wifi_7",
+            "ethernet_10gbe",
+            "usb4_direct",
+            "optical_network",
+            "apn_iown_style_path",
+            "local_high_speed_network",
+            "cloud_gateway_path",
+            "unknown"
+          ]
+        },
+        "secondary_connection": {
+          "type": "string",
+          "enum": [
+            "none",
+            "wifi_7",
+            "ethernet_10gbe",
+            "usb4_direct",
+            "optical_network",
+            "local_router",
+            "cloud_gateway_path",
+            "unknown"
+          ]
+        },
+        "optical_path_supported": {
+          "type": "boolean"
+        },
+        "local_discovery_supported": {
+          "type": "boolean"
+        },
+        "connection_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "latency_profile": {
+      "type": "object",
+      "description": "Latency behavior of the Optical Node.",
+      "additionalProperties": false,
+      "required": [
+        "latency_class",
+        "local_priority",
+        "cloud_latency_penalty"
+      ],
+      "properties": {
+        "latency_class": {
+          "type": "string",
+          "enum": [
+            "ultra_low",
+            "low",
+            "medium",
+            "high",
+            "variable",
+            "unknown"
+          ]
+        },
+        "local_priority": {
+          "type": "boolean"
+        },
+        "cloud_latency_penalty": {
+          "type": "string",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "latency_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "bandwidth_profile": {
+      "type": "object",
+      "description": "Bandwidth and congestion behavior of the Optical Node.",
+      "additionalProperties": false,
+      "required": [
+        "bandwidth_class",
+        "congestion_risk",
+        "background_sync_allowed"
+      ],
+      "properties": {
+        "bandwidth_class": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "very_high",
+            "variable",
+            "unknown"
+          ]
+        },
+        "congestion_risk": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "unknown"
+          ]
+        },
+        "background_sync_allowed": {
+          "type": "boolean"
+        },
+        "bandwidth_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "routing_policy": {
+      "type": "object",
+      "description": "Routing policy for local-first nervous coordination.",
+      "additionalProperties": false,
+      "required": [
+        "prefer_local_nodes",
+        "prefer_memory_near_compute",
+        "escalate_to_cloud_when_needed",
+        "avoid_unnecessary_data_movement"
+      ],
+      "properties": {
+        "prefer_local_nodes": {
+          "type": "boolean"
+        },
+        "prefer_memory_near_compute": {
+          "type": "boolean"
+        },
+        "escalate_to_cloud_when_needed": {
+          "type": "boolean"
+        },
+        "avoid_unnecessary_data_movement": {
+          "type": "boolean"
+        },
+        "respect_wind_circulation_state": {
+          "type": "boolean",
+          "description": "Whether routing decisions should consider Wind Node thermal, acoustic, and power state."
+        },
+        "cloud_is_default": {
+          "type": "boolean",
+          "description": "Whether cloud infrastructure is treated as the default route. Usually false in local-first architecture."
+        }
+      }
+    },
+    "signal_priorities": {
+      "type": "object",
+      "description": "Optional signal priority configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "control_signal_priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "memory_query_priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "trace_write_priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "background_sync_priority": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        }
+      }
+    },
+    "memory_access": {
+      "type": "object",
+      "description": "Memory access behavior for the Optical Node.",
+      "additionalProperties": false,
+      "required": [
+        "nearest_memory_node",
+        "memory_role",
+        "remote_memory_allowed"
+      ],
+      "properties": {
+        "nearest_memory_node": {
+          "type": "string",
+          "description": "Nearest local or near-local memory node.",
+          "minLength": 1,
+          "examples": [
+            "nas-memory-01",
+            "local-trace-store-01"
+          ]
+        },
+        "memory_role": {
+          "type": "string",
+          "enum": [
+            "coordination_memory",
+            "trace_storage",
+            "model_cache",
+            "context_memory",
+            "governance_log",
+            "circulation_history",
+            "none",
+            "unknown"
+          ]
+        },
+        "remote_memory_allowed": {
+          "type": "boolean"
+        },
+        "memory_privacy_boundary": {
+          "type": "string",
+          "enum": [
+            "local_only",
+            "trusted_local_network",
+            "approved_remote",
+            "unrestricted",
+            "unknown"
+          ]
+        },
+        "memory_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "wind_node_links": {
+      "type": "array",
+      "description": "Wind Nodes connected to or coordinated by this Optical Node.",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "node_id",
+          "link_role"
+        ],
+        "properties": {
+          "node_id": {
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "spark-node-01",
+              "quiet-edge-node-01"
+            ]
+          },
+          "link_role": {
+            "type": "string",
+            "enum": [
+              "primary_execution_node",
+              "fallback_execution_node",
+              "memory_adjacent_node",
+              "low_power_edge_node",
+              "thermal_backup_node",
+              "local_review_node",
+              "unknown"
+            ]
+          },
+          "wind_state_required": {
+            "type": "boolean",
+            "description": "Whether the Optical Node should check the Wind Node circulation state before routing tasks."
+          }
+        }
+      }
+    },
+    "fallback_paths": {
+      "type": "array",
+      "description": "Fallback routes used when the primary route is unsuitable.",
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path_id",
+          "fallback_role"
+        ],
+        "properties": {
+          "path_id": {
+            "type": "string",
+            "minLength": 1,
+            "examples": [
+              "cloud-gateway-01",
+              "secondary-router-01"
+            ]
+          },
+          "fallback_role": {
+            "type": "string",
+            "enum": [
+              "remote_escalation",
+              "local_network_backup",
+              "memory_backup",
+              "edge_backup",
+              "human_review_route",
+              "delayed_execution",
+              "unknown"
+            ]
+          },
+          "fallback_priority": {
+            "type": "string",
+            "enum": [
+              "primary",
+              "secondary",
+              "tertiary",
+              "last_resort",
+              "unknown"
+            ]
+          }
+        }
+      }
+    },
+    "lifecycle_state": {
+      "type": "string",
+      "description": "Current lifecycle state of the Optical Node.",
+      "enum": [
+        "registered",
+        "discoverable",
+        "available",
+        "routing",
+        "congested",
+        "degraded",
+        "fallback_only",
+        "offline"
+      ]
+    },
+    "nervous_trace_policy": {
+      "type": "object",
+      "description": "Optional policy for logging routing and signal decisions.",
+      "additionalProperties": false,
+      "properties": {
+        "log_routing_decisions": {
+          "type": "boolean"
+        },
+        "log_latency_class": {
+          "type": "boolean"
+        },
+        "log_memory_path": {
+          "type": "boolean"
+        },
+        "log_cloud_escalation": {
+          "type": "boolean"
+        },
+        "log_wind_state_considered": {
+          "type": "boolean"
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "description": "Human-readable notes about the Optical Node.",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
+```
