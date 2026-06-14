@@ -10,6 +10,8 @@ Current validation targets:
   -> schemas/wind-node.schema.json
 - examples/optical-node.example.yaml
   -> schemas/optical-node.schema.json
+- examples/hybrid-node.example.yaml
+  -> schemas/hybrid-node.schema.json
 """
 
 from __future__ import annotations
@@ -35,6 +37,11 @@ VALIDATION_TARGETS = [
         "name": "Optical Node",
         "schema": REPOSITORY_ROOT / "schemas" / "optical-node.schema.json",
         "example": REPOSITORY_ROOT / "examples" / "optical-node.example.yaml",
+    },
+    {
+        "name": "Hybrid Node",
+        "schema": REPOSITORY_ROOT / "schemas" / "hybrid-node.schema.json",
+        "example": REPOSITORY_ROOT / "examples" / "hybrid-node.example.yaml",
     },
 ]
 
@@ -125,3 +132,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
+
