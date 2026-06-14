@@ -63,23 +63,20 @@ memory_notes:
 - "Memory access should remain close to compute unless escalation is justified."
 
 fallback_policy:
-  fallback_paths:
-    - path_id: "quiet-edge-node-01"
-      fallback_role: "local_execution_backup"
-      fallback_priority: "secondary"
-    - path_id: "secondary-router-01"
-      fallback_role: "local_network_backup"
-      fallback_priority: "tertiary"
-    - path_id: "cloud-gateway-01"
-      fallback_role: "remote_escalation"
-      fallback_priority: "last_resort"
-
-  escalation_requires_trace: true
-
-  fallback_notes:
-    - "Fallback should be used when local execution would create physical stress."
-    - "Cloud escalation must be traceable and should remain a last-resort path."
-
+fallback_paths:
+- path_id: "quiet-edge-node-01"
+fallback_role: "local_execution_backup"
+fallback_priority: "secondary"
+- path_id: "secondary-router-01"
+fallback_role: "local_network_backup"
+fallback_priority: "tertiary"
+- path_id: "cloud-gateway-01"
+fallback_role: "remote_escalation"
+fallback_priority: "last_resort"
+escalation_requires_trace: true
+fallback_notes:
+- "Fallback should be used when local execution would create physical stress."
+- "Cloud escalation must be traceable and should remain a last-resort path."
 
 trace_policy:
 log_execution_decisions: true
@@ -95,7 +92,8 @@ trace_notes:
 lifecycle_state: "available"
 
 notes:
-  - "This Hybrid Node represents a local AI workstation that combines Wind and Optical responsibilities."
-  - "It can execute local inference, coordinate nearby nodes, access nearby memory, and escalate only when needed."
-  - "It should route only what the body can sustain."
+
+- "This Hybrid Node represents a local AI workstation that combines Wind and Optical responsibilities."
+- "It can execute local inference, coordinate nearby nodes, access nearby memory, and escalate only when needed."
+- "It should route only what the body can sustain."
 
