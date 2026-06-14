@@ -11,7 +11,7 @@ on:
 
 jobs:
   validate-examples:
-    name: Validate example YAML files
+    name: Validate Wind and Optical Node examples
     runs-on: ubuntu-latest
 
     steps:
@@ -35,3 +35,4 @@ jobs:
       - name: Validate examples
         run: |
           python scripts/validate_examples.py
+
