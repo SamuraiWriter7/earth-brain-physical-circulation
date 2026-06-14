@@ -1,0 +1,521 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://github.com/SamuraiWriter7/earth-brain-physical-circulation/schemas/hybrid-node.schema.json",
+"title": "Hybrid Node Schema",
+"description": "A schema for describing a Hybrid Wind/Optical Node in the Physical Circulation Architecture of Earth Brain OS.",
+"type": "object",
+"additionalProperties": false,
+"required": [
+"schema_version",
+"node_id",
+"node_type",
+"hybrid_role",
+"wind_profile",
+"optical_profile",
+"execution_policy",
+"routing_policy",
+"memory_policy",
+"fallback_policy",
+"trace_policy",
+"lifecycle_state"
+],
+"properties": {
+"schema_version": {
+"type": "string",
+"description": "Version of this schema used by the Hybrid Node record.",
+"const": "0.3.0"
+},
+"node_id": {
+"type": "string",
+"description": "Unique identifier for the Hybrid Wind/Optical Node.",
+"minLength": 1,
+"examples": [
+"hybrid-ai-workstation-01",
+"edge-server-01",
+"ai-router-accelerated-01"
+]
+},
+"node_type": {
+"type": "string",
+"description": "Type of hybrid physical AI node.",
+"enum": [
+"local_ai_workstation",
+"edge_ai_server",
+"ai_router_with_inference",
+"nas_with_ai_acceleration",
+"quiet_execution_node",
+"field_hybrid_node",
+"hybrid_wind_optical_node"
+]
+},
+"hybrid_role": {
+"type": "string",
+"description": "Primary hybrid role of the node.",
+"enum": [
+"execution_and_coordination_organ",
+"routing_and_inference_organ",
+"memory_and_execution_organ",
+"edge_coordination_organ",
+"local_review_and_execution_organ",
+"cloud_interface_and_local_execution_organ",
+"hybrid_circulation_nervous_organ"
+]
+},
+"wind_profile": {
+"type": "object",
+"description": "Wind-side physical circulation properties of the Hybrid Node.",
+"additionalProperties": false,
+"required": [
+"compute_class",
+"circulation_role",
+"thermal_state",
+"acoustic_state",
+"power_stability",
+"burst_allowed",
+"cooldown_required_after_burst"
+],
+"properties": {
+"compute_class": {
+"type": "string",
+"enum": [
+"low_power_inference",
+"standard_local_inference",
+"high_local_inference",
+"burst_reasoning",
+"edge_coordination",
+"memory_assisted_compute"
+]
+},
+"circulation_role": {
+"type": "string",
+"enum": [
+"compute_lung",
+"cognitive_muscle",
+"silent_pressure_organ",
+"circulation_chamber",
+"power_meridian",
+"stable_peripheral_cell",
+"hybrid_circulation_organ"
+]
+},
+"thermal_state": {
+"type": "string",
+"enum": [
+"cool",
+"stable",
+"warm",
+"hot",
+"strained",
+"critical"
+]
+},
+"acoustic_state": {
+"type": "string",
+"enum": [
+"silent",
+"quiet",
+"moderate",
+"loud",
+"strained",
+"unknown"
+]
+},
+"power_stability": {
+"type": "string",
+"enum": [
+"stable",
+"variable",
+"limited",
+"unstable",
+"unknown"
+]
+},
+"airflow_state": {
+"type": "string",
+"enum": [
+"stable",
+"restricted",
+"turbulent",
+"unknown"
+]
+},
+"cooling_method": {
+"type": "string",
+"enum": [
+"passive",
+"active_airflow",
+"hybrid_airflow",
+"silent_pressure",
+"liquid_assisted",
+"external_cooling",
+"unknown"
+]
+},
+"burst_allowed": {
+"type": "boolean"
+},
+"cooldown_required_after_burst": {
+"type": "boolean"
+},
+"rest_required": {
+"type": "boolean"
+},
+"wind_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"optical_profile": {
+"type": "object",
+"description": "Optical-side nervous coordination properties of the Hybrid Node.",
+"additionalProperties": false,
+"required": [
+"nervous_role",
+"primary_connection",
+"secondary_connection",
+"latency_class",
+"bandwidth_class",
+"local_discovery_supported"
+],
+"properties": {
+"nervous_role": {
+"type": "string",
+"enum": [
+"local_nervous_ganglion",
+"optical_nerve_bundle",
+"memory_nucleus",
+"peripheral_intelligence_node",
+"execution_organ",
+"cloud_interface_organ",
+"hybrid_nervous_organ"
+]
+},
+"primary_connection": {
+"type": "string",
+"enum": [
+"wifi_7",
+"ethernet_10gbe",
+"usb4_direct",
+"optical_network",
+"apn_iown_style_path",
+"local_high_speed_network",
+"cloud_gateway_path",
+"unknown"
+]
+},
+"secondary_connection": {
+"type": "string",
+"enum": [
+"none",
+"wifi_7",
+"ethernet_10gbe",
+"usb4_direct",
+"optical_network",
+"local_router",
+"cloud_gateway_path",
+"unknown"
+]
+},
+"latency_class": {
+"type": "string",
+"enum": [
+"ultra_low",
+"low",
+"medium",
+"high",
+"variable",
+"unknown"
+]
+},
+"bandwidth_class": {
+"type": "string",
+"enum": [
+"low",
+"medium",
+"high",
+"very_high",
+"variable",
+"unknown"
+]
+},
+"local_discovery_supported": {
+"type": "boolean"
+},
+"optical_path_supported": {
+"type": "boolean"
+},
+"cloud_latency_penalty": {
+"type": "string",
+"enum": [
+"none",
+"low",
+"medium",
+"high",
+"unknown"
+]
+},
+"optical_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"execution_policy": {
+"type": "object",
+"description": "Policy for local task execution.",
+"additionalProperties": false,
+"required": [
+"prefer_local_execution",
+"allow_burst_execution",
+"reduce_depth_when_strained",
+"require_stable_wind_state"
+],
+"properties": {
+"prefer_local_execution": {
+"type": "boolean"
+},
+"allow_burst_execution": {
+"type": "boolean"
+},
+"reduce_depth_when_strained": {
+"type": "boolean"
+},
+"require_stable_wind_state": {
+"type": "boolean"
+},
+"delay_non_urgent_tasks_when_strained": {
+"type": "boolean"
+},
+"execution_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"routing_policy": {
+"type": "object",
+"description": "Policy for routing tasks, signals, memory queries, and escalation requests.",
+"additionalProperties": false,
+"required": [
+"prefer_local_nodes",
+"prefer_memory_near_compute",
+"avoid_unnecessary_data_movement",
+"escalate_to_cloud_when_needed",
+"cloud_is_default"
+],
+"properties": {
+"prefer_local_nodes": {
+"type": "boolean"
+},
+"prefer_memory_near_compute": {
+"type": "boolean"
+},
+"avoid_unnecessary_data_movement": {
+"type": "boolean"
+},
+"escalate_to_cloud_when_needed": {
+"type": "boolean"
+},
+"cloud_is_default": {
+"type": "boolean"
+},
+"respect_wind_circulation_state": {
+"type": "boolean"
+},
+"routing_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"memory_policy": {
+"type": "object",
+"description": "Memory proximity and privacy policy for the Hybrid Node.",
+"additionalProperties": false,
+"required": [
+"nearest_memory_node",
+"memory_role",
+"remote_memory_allowed",
+"memory_privacy_boundary"
+],
+"properties": {
+"nearest_memory_node": {
+"type": "string",
+"minLength": 1,
+"examples": [
+"nas-memory-01",
+"local-trace-store-01"
+]
+},
+"memory_role": {
+"type": "string",
+"enum": [
+"coordination_memory",
+"trace_storage",
+"model_cache",
+"context_memory",
+"governance_log",
+"circulation_history",
+"none",
+"unknown"
+]
+},
+"remote_memory_allowed": {
+"type": "boolean"
+},
+"memory_privacy_boundary": {
+"type": "string",
+"enum": [
+"local_only",
+"trusted_local_network",
+"approved_remote",
+"unrestricted",
+"unknown"
+]
+},
+"memory_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"fallback_policy": {
+"type": "object",
+"description": "Fallback and escalation behavior for the Hybrid Node.",
+"additionalProperties": false,
+"required": [
+"fallback_paths"
+],
+"properties": {
+"fallback_paths": {
+"type": "array",
+"minItems": 0,
+"items": {
+"type": "object",
+"additionalProperties": false,
+"required": [
+"path_id",
+"fallback_role"
+],
+"properties": {
+"path_id": {
+"type": "string",
+"minLength": 1,
+"examples": [
+"quiet-edge-node-01",
+"cloud-gateway-01"
+]
+},
+"fallback_role": {
+"type": "string",
+"enum": [
+"local_execution_backup",
+"local_network_backup",
+"memory_backup",
+"edge_backup",
+"remote_escalation",
+"human_review_route",
+"delayed_execution",
+"unknown"
+]
+},
+"fallback_priority": {
+"type": "string",
+"enum": [
+"primary",
+"secondary",
+"tertiary",
+"last_resort",
+"unknown"
+]
+}
+}
+}
+},
+"escalation_requires_trace": {
+"type": "boolean"
+},
+"fallback_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"trace_policy": {
+"type": "object",
+"description": "Policy for logging hybrid execution, routing, memory, and circulation decisions.",
+"additionalProperties": false,
+"required": [
+"log_execution_decisions",
+"log_routing_decisions",
+"log_wind_state",
+"log_memory_path",
+"log_cloud_escalation"
+],
+"properties": {
+"log_execution_decisions": {
+"type": "boolean"
+},
+"log_routing_decisions": {
+"type": "boolean"
+},
+"log_wind_state": {
+"type": "boolean"
+},
+"log_memory_path": {
+"type": "boolean"
+},
+"log_cloud_escalation": {
+"type": "boolean"
+},
+"log_rest_required": {
+"type": "boolean"
+},
+"trace_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"lifecycle_state": {
+"type": "string",
+"description": "Current lifecycle state of the Hybrid Node.",
+"enum": [
+"registered",
+"idle",
+"available",
+"active",
+"routing",
+"strained",
+"cooling",
+"congested",
+"resting",
+"degraded",
+"fallback_only",
+"offline"
+]
+},
+"notes": {
+"type": "array",
+"description": "Human-readable notes about the Hybrid Wind/Optical Node.",
+"items": {
+"type": "string"
+}
+}
+}
+}
