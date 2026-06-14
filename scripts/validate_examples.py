@@ -12,6 +12,8 @@ Current validation targets:
   -> schemas/optical-node.schema.json
 - examples/hybrid-node.example.yaml
   -> schemas/hybrid-node.schema.json
+- examples/physical-circulation-trace.example.yaml
+  -> schemas/physical-circulation-trace.schema.json
 """
 
 from __future__ import annotations
@@ -42,6 +44,15 @@ VALIDATION_TARGETS = [
         "name": "Hybrid Node",
         "schema": REPOSITORY_ROOT / "schemas" / "hybrid-node.schema.json",
         "example": REPOSITORY_ROOT / "examples" / "hybrid-node.example.yaml",
+    },
+    {
+        "name": "Physical Circulation Trace",
+        "schema": REPOSITORY_ROOT
+        / "schemas"
+        / "physical-circulation-trace.schema.json",
+        "example": REPOSITORY_ROOT
+        / "examples"
+        / "physical-circulation-trace.example.yaml",
     },
 ]
 
@@ -132,5 +143,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-
 
