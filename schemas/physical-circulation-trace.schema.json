@@ -1,0 +1,435 @@
+{
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://github.com/SamuraiWriter7/earth-brain-physical-circulation/schemas/physical-circulation-trace.schema.json",
+"title": "Physical Circulation Trace Schema",
+"description": "A schema for recording physical circulation outcomes in the Physical Circulation Architecture of Earth Brain OS.",
+"type": "object",
+"additionalProperties": false,
+"required": [
+"schema_version",
+"trace_id",
+"trace_type",
+"source_node_id",
+"task_id",
+"start_state",
+"end_state",
+"wind_state",
+"optical_route",
+"memory_path",
+"fallback_used",
+"cloud_escalated",
+"rest_required",
+"outcome"
+],
+"properties": {
+"schema_version": {
+"type": "string",
+"description": "Version of this schema used by the Physical Circulation Trace record.",
+"const": "0.4.0"
+},
+"trace_id": {
+"type": "string",
+"description": "Unique identifier for the Physical Circulation Trace.",
+"minLength": 1,
+"examples": [
+"pct-2026-001"
+]
+},
+"trace_type": {
+"type": "string",
+"description": "Type of physical circulation trace.",
+"enum": [
+"wind_circulation_outcome",
+"optical_routing_outcome",
+"hybrid_execution_outcome",
+"fallback_escalation",
+"rest_recovery"
+]
+},
+"source_node_id": {
+"type": "string",
+"description": "Node that initiated or performed the physical circulation event.",
+"minLength": 1,
+"examples": [
+"hybrid-ai-workstation-01",
+"spark-node-01",
+"ai-router-01"
+]
+},
+"target_node_id": {
+"type": "string",
+"description": "Optional target node involved in the trace.",
+"minLength": 1,
+"examples": [
+"hybrid-ai-workstation-01",
+"quiet-edge-node-01",
+"cloud-gateway-01"
+]
+},
+"task_id": {
+"type": "string",
+"description": "Task, signal, route, memory request, or recovery event identifier.",
+"minLength": 1,
+"examples": [
+"task-2026-physical-001"
+]
+},
+"start_state": {
+"type": "string",
+"description": "Lifecycle state at the beginning of the physical circulation event.",
+"enum": [
+"registered",
+"idle",
+"discoverable",
+"available",
+"active",
+"routing",
+"strained",
+"cooling",
+"congested",
+"resting",
+"degraded",
+"fallback_only",
+"offline",
+"unknown"
+]
+},
+"end_state": {
+"type": "string",
+"description": "Lifecycle state at the end of the physical circulation event.",
+"enum": [
+"registered",
+"idle",
+"discoverable",
+"available",
+"active",
+"routing",
+"strained",
+"cooling",
+"congested",
+"resting",
+"degraded",
+"fallback_only",
+"offline",
+"unknown"
+]
+},
+"wind_state": {
+"type": "object",
+"description": "Wind-side physical state changes observed during the trace.",
+"additionalProperties": false,
+"required": [
+"thermal_change",
+"acoustic_change",
+"power_change"
+],
+"properties": {
+"thermal_change": {
+"type": "string",
+"enum": [
+"none",
+"low",
+"moderate_increase",
+"high_increase",
+"reduced",
+"critical",
+"unknown"
+]
+},
+"acoustic_change": {
+"type": "string",
+"enum": [
+"none",
+"low",
+"moderate_increase",
+"high_increase",
+"reduced",
+"strained",
+"unknown"
+]
+},
+"power_change": {
+"type": "string",
+"enum": [
+"stable",
+"increased_draw",
+"reduced_draw",
+"limited",
+"unstable",
+"unknown"
+]
+},
+"airflow_change": {
+"type": "string",
+"enum": [
+"none",
+"stable",
+"restricted",
+"turbulent",
+"improved",
+"unknown"
+]
+},
+"cooling_action": {
+"type": "string",
+"enum": [
+"none",
+"passive_cooling",
+"active_cooling",
+"reduced_task_depth",
+"cooldown_started",
+"rerouted_due_to_heat",
+"unknown"
+]
+},
+"wind_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"optical_route": {
+"type": "object",
+"description": "Optical-side route and nervous coordination outcome.",
+"additionalProperties": false,
+"required": [
+"selected_route",
+"fallback_used",
+"cloud_escalated"
+],
+"properties": {
+"selected_route": {
+"type": "string",
+"enum": [
+"local_execution",
+"local_high_speed_network",
+"wifi_7",
+"ethernet_10gbe",
+"usb4_direct",
+"optical_network",
+"edge_route",
+"cloud_gateway",
+"delayed_execution",
+"human_review_route",
+"none",
+"unknown"
+]
+},
+"source_route_node": {
+"type": "string",
+"minLength": 1
+},
+"destination_route_node": {
+"type": "string",
+"minLength": 1
+},
+"latency_class": {
+"type": "string",
+"enum": [
+"ultra_low",
+"low",
+"medium",
+"high",
+"variable",
+"unknown"
+]
+},
+"bandwidth_class": {
+"type": "string",
+"enum": [
+"low",
+"medium",
+"high",
+"very_high",
+"variable",
+"unknown"
+]
+},
+"fallback_used": {
+"type": "boolean"
+},
+"cloud_escalated": {
+"type": "boolean"
+},
+"route_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"memory_path": {
+"type": "object",
+"description": "Memory path used during the physical circulation event.",
+"additionalProperties": false,
+"required": [
+"memory_node_id",
+"memory_role",
+"remote_memory_used"
+],
+"properties": {
+"memory_node_id": {
+"type": "string",
+"description": "Memory node used by the trace event.",
+"minLength": 1,
+"examples": [
+"nas-memory-01",
+"local-trace-store-01"
+]
+},
+"memory_role": {
+"type": "string",
+"enum": [
+"coordination_memory",
+"trace_storage",
+"model_cache",
+"context_memory",
+"governance_log",
+"circulation_history",
+"none",
+"unknown"
+]
+},
+"remote_memory_used": {
+"type": "boolean"
+},
+"memory_privacy_boundary": {
+"type": "string",
+"enum": [
+"local_only",
+"trusted_local_network",
+"approved_remote",
+"unrestricted",
+"unknown"
+]
+},
+"memory_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"fallback_used": {
+"type": "boolean",
+"description": "Whether a fallback route, node, or mode was used."
+},
+"cloud_escalated": {
+"type": "boolean",
+"description": "Whether the event escalated to cloud or remote infrastructure."
+},
+"rest_required": {
+"type": "boolean",
+"description": "Whether cooldown, rest, or recovery was required after the event."
+},
+"rest_recovery": {
+"type": "object",
+"description": "Optional rest and recovery details.",
+"additionalProperties": false,
+"properties": {
+"rest_trigger": {
+"type": "string",
+"enum": [
+"none",
+"thermal_load",
+"acoustic_pressure",
+"power_instability",
+"network_congestion",
+"burst_execution",
+"sustained_routing",
+"memory_load",
+"unknown"
+]
+},
+"recovery_action": {
+"type": "string",
+"enum": [
+"none",
+"cooldown",
+"resting",
+"reduced_depth",
+"rerouted_future_tasks",
+"degraded_mode",
+"manual_review",
+"unknown"
+]
+},
+"future_routing_recommendation": {
+"type": "string",
+"enum": [
+"allow_normal_routing",
+"prefer_lighter_tasks",
+"avoid_burst_execution",
+"prefer_alternate_node",
+"require_human_review",
+"unknown"
+]
+}
+}
+},
+"outcome": {
+"type": "string",
+"description": "Final outcome of the physical circulation event.",
+"enum": [
+"local_execution_completed",
+"local_execution_reduced",
+"routed_to_local_node",
+"routed_to_edge_node",
+"fallback_used",
+"cloud_escalated",
+"delayed_for_rest",
+"human_review_required",
+"failed",
+"unknown"
+]
+},
+"learning_signal": {
+"type": "object",
+"description": "Optional learning signal derived from this trace.",
+"additionalProperties": false,
+"properties": {
+"local_first_success": {
+"type": "boolean"
+},
+"future_depth_adjustment": {
+"type": "string",
+"enum": [
+"none",
+"reduce_depth",
+"allow_depth_increase",
+"require_cooldown",
+"unknown"
+]
+},
+"future_route_adjustment": {
+"type": "string",
+"enum": [
+"none",
+"prefer_same_route",
+"prefer_alternate_local_route",
+"prefer_edge_route",
+"avoid_cloud_when_possible",
+"unknown"
+]
+},
+"learning_notes": {
+"type": "array",
+"items": {
+"type": "string"
+}
+}
+}
+},
+"notes": {
+"type": "array",
+"description": "Human-readable notes about the Physical Circulation Trace.",
+"items": {
+"type": "string"
+}
+}
+}
+}
