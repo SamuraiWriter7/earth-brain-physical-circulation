@@ -6,6 +6,124 @@ This project follows a candidate-based early versioning style during the initial
 
 ---
 
+## [v0.4.0-candidate] - 2026-06-14
+
+### Added
+
+* Added `docs/physical-circulation-trace.md`.
+
+  * Defines the Physical Circulation Trace model for Earth Brain OS.
+  * Introduces operational records for Wind Nodes, Optical Nodes, and Hybrid Nodes.
+  * Defines trace types:
+
+    * wind_circulation_outcome
+    * optical_routing_outcome
+    * hybrid_execution_outcome
+    * fallback_escalation
+    * rest_recovery
+  * Defines how physical traces record task execution, thermal change, acoustic change, power change, routing decisions, memory access, fallback behavior, cloud escalation, rest and recovery, final outcome, and learning signals.
+  * Defines the relationship between Physical Circulation Trace and the Memory / Trace Layer.
+* Added `schemas/physical-circulation-trace.schema.json`.
+
+  * Defines the initial JSON Schema for Physical Circulation Trace records.
+  * Includes trace identity, trace type, source node, target node, task ID, lifecycle states, Wind state, Optical route, memory path, fallback status, cloud escalation status, rest requirement, rest recovery, outcome, learning signal, and notes.
+* Added `examples/physical-circulation-trace.example.yaml`.
+
+  * Provides a valid example of a Hybrid Node execution outcome.
+  * Demonstrates local execution, thermal change, acoustic change, power change, optical route, memory path, fallback status, cloud escalation status, rest requirement, recovery action, and learning signal.
+* Updated `scripts/validate_examples.py`.
+
+  * Added validation support for `examples/physical-circulation-trace.example.yaml`.
+  * The validator now checks Wind Node, Optical Node, Hybrid Node, and Physical Circulation Trace examples.
+* Updated `README.md`.
+
+  * Added Physical Circulation Trace overview.
+  * Added Physical Circulation Trace schema and example sections.
+  * Updated repository structure, key documents, current version, design principles, non-goals, and future direction.
+
+### Validated
+
+* Confirmed that the GitHub Actions validation workflow passes.
+* Confirmed that `examples/wind-node.example.yaml` validates against `schemas/wind-node.schema.json`.
+* Confirmed that `examples/optical-node.example.yaml` validates against `schemas/optical-node.schema.json`.
+* Confirmed that `examples/hybrid-node.example.yaml` validates against `schemas/hybrid-node.schema.json`.
+* Confirmed that `examples/physical-circulation-trace.example.yaml` validates against `schemas/physical-circulation-trace.schema.json`.
+* Confirmed that the repository now validates four physical models:
+
+  * Wind Node
+  * Optical Node
+  * Hybrid Node
+  * Physical Circulation Trace
+
+### Fixed During Candidate Development
+
+* Fixed YAML indentation issues in `examples/physical-circulation-trace.example.yaml`.
+* Confirmed that nested objects such as `wind_state`, `optical_route`, `memory_path`, `rest_recovery`, and `learning_signal` are correctly parsed as objects.
+* Confirmed that the Physical Circulation Trace example passes validation cleanly.
+
+### Architectural Meaning
+
+This release gives Earth Brain OS its first physical operation memory model.
+
+The previous releases established:
+
+```text
+v0.1.0-candidate
+Wind Node
+= internal breathing and physical stability
+
+v0.2.0-candidate
+Optical Node
+= external connection and signal coordination
+
+v0.3.0-candidate
+Hybrid Node
+= integrated execution, circulation, routing, memory, fallback, and recovery
+```
+
+The `v0.4.0-candidate` release introduces:
+
+```text
+Physical Circulation Trace
+= operational memory of physical behavior, routing, fallback, rest, and recovery
+```
+
+Together, these four models allow Earth Brain OS to describe:
+
+* how local AI nodes sustain computation physically
+* how local AI nodes coordinate through nervous signal flow
+* how real-world hybrid AI devices execute and route work while respecting physical limits
+* how the physical body records what happened and learns from operation
+
+The core shift is:
+
+> Earth Brain OS now has breathing organs, nervous pathways, integrated hybrid organs, and physical memory.
+
+### Current Scope
+
+This version focuses on:
+
+* Physical Circulation Trace documentation
+* Physical Circulation Trace schema
+* Physical Circulation Trace example
+* validator expansion
+* README update for Wind + Optical + Hybrid + Trace architecture
+
+### Future Direction
+
+Possible next versions may add:
+
+* nervous routing outcome logs
+* hybrid trace records
+* thermal-acoustic routing policies
+* breathing reasoning node profiles
+* Earth Brain OS integration records
+* physical circulation event schemas
+* physical circulation recurrence rules
+* physical health scoring for local AI nodes
+
+---
+
 ## [v0.3.0-candidate] - 2026-06-14
 
 ### Added
