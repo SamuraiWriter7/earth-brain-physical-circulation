@@ -1,0 +1,83 @@
+schema_version: "0.2.0"
+
+node_id: "ai-router-01"
+node_type: "ai_router"
+nervous_role: "local_nervous_ganglion"
+
+connection_profile:
+  primary_connection: "wifi_7"
+  secondary_connection: "ethernet_10gbe"
+  optical_path_supported: false
+  local_discovery_supported: true
+  connection_notes:
+    - "This node coordinates nearby Wind Nodes through local-first routing."
+    - "The secondary connection supports stable local backbone communication."
+
+latency_profile:
+  latency_class: "low"
+  local_priority: true
+  cloud_latency_penalty: "medium"
+  latency_notes:
+    - "Local routing should be preferred when nearby nodes are available."
+    - "Cloud escalation is allowed but should not be treated as the default path."
+
+bandwidth_profile:
+  bandwidth_class: "high"
+  congestion_risk: "low"
+  background_sync_allowed: true
+  bandwidth_notes:
+    - "Background synchronization is allowed only when it does not interfere with priority signals."
+    - "Large data movement should be avoided unless it improves execution, memory access, or verification."
+
+routing_policy:
+  prefer_local_nodes: true
+  prefer_memory_near_compute: true
+  escalate_to_cloud_when_needed: true
+  avoid_unnecessary_data_movement: true
+  respect_wind_circulation_state: true
+  cloud_is_default: false
+
+signal_priorities:
+  control_signal_priority: "critical"
+  memory_query_priority: "high"
+  trace_write_priority: "medium"
+  background_sync_priority: "low"
+
+memory_access:
+  nearest_memory_node: "nas-memory-01"
+  memory_role: "coordination_memory"
+  remote_memory_allowed: true
+  memory_privacy_boundary: "trusted_local_network"
+  memory_notes:
+    - "The nearest NAS memory node should be queried before remote memory."
+    - "Memory access should remain local when the task can be completed nearby."
+
+wind_node_links:
+  - node_id: "spark-node-01"
+    link_role: "primary_execution_node"
+    wind_state_required: true
+  - node_id: "quiet-edge-node-01"
+    link_role: "fallback_execution_node"
+    wind_state_required: true
+
+fallback_paths:
+  - path_id: "secondary-router-01"
+    fallback_role: "local_network_backup"
+    fallback_priority: "secondary"
+  - path_id: "cloud-gateway-01"
+    fallback_role: "remote_escalation"
+    fallback_priority: "last_resort"
+
+lifecycle_state: "available"
+
+nervous_trace_policy:
+  log_routing_decisions: true
+  log_latency_class: true
+  log_memory_path: true
+  log_cloud_escalation: true
+  log_wind_state_considered: true
+
+notes:
+  - "This Optical Node represents a local nervous ganglion for Earth Brain OS."
+  - "It coordinates nearby Wind Nodes while respecting thermal, acoustic, and power circulation state."
+  - "It prefers local-first routing and escalates to cloud infrastructure only when local or edge routes are insufficient."
