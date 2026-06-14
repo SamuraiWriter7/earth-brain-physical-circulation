@@ -2,12 +2,14 @@
 """
 Validate example YAML files against their JSON Schemas.
 
-This script validates the initial Physical Circulation examples for
+This script validates the Physical Circulation examples for
 Earth Brain OS.
 
-Current validation target:
+Current validation targets:
 - examples/wind-node.example.yaml
   -> schemas/wind-node.schema.json
+- examples/optical-node.example.yaml
+  -> schemas/optical-node.schema.json
 """
 
 from __future__ import annotations
@@ -28,7 +30,12 @@ VALIDATION_TARGETS = [
         "name": "Wind Node",
         "schema": REPOSITORY_ROOT / "schemas" / "wind-node.schema.json",
         "example": REPOSITORY_ROOT / "examples" / "wind-node.example.yaml",
-    }
+    },
+    {
+        "name": "Optical Node",
+        "schema": REPOSITORY_ROOT / "schemas" / "optical-node.schema.json",
+        "example": REPOSITORY_ROOT / "examples" / "optical-node.example.yaml",
+    },
 ]
 
 
