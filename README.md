@@ -1,6 +1,6 @@
 # Earth Brain Physical Circulation
 
-**Wind Circulation and Optical Nervous Architecture for Earth Brain OS**
+**Wind Circulation, Optical Nervous, and Hybrid Node Architecture for Earth Brain OS**
 
 This repository defines the physical circulation layer for **Earth Brain OS**.
 
@@ -15,11 +15,12 @@ It describes how local AI nodes can operate as sustainable physical organs by co
 * local memory
 * local-first networking
 * optical nervous coordination
+* hybrid execution and routing
 * rest and recovery cycles
 
 The goal is not simply to maximize computation.
 
-The goal is to allow AI infrastructure to breathe, connect, and sustain itself as a physical body.
+The goal is to allow AI infrastructure to breathe, connect, coordinate, and sustain itself as a physical body.
 
 ---
 
@@ -52,11 +53,14 @@ Memory node
 
 AI router
 = local nervous ganglion
+
+Hybrid node
+= breathing nervous organ
 ```
 
 In short:
 
-> Earth Brain OS needs not only memory and events, but also breath, nerves, and circulation.
+> Earth Brain OS needs not only memory and events, but also breath, nerves, circulation, and hybrid local organs.
 
 ---
 
@@ -73,17 +77,20 @@ Memory / Trace Layer
         ↓
 Optical Nervous Layer
         ↓
+Hybrid Wind/Optical Node Layer
+        ↓
 Wind Circulation Layer
         ↓
 Physical Compute Substrate
 ```
 
-The current `v0.2.0-candidate` defines two major physical layers:
+The current `v0.3.0-candidate` defines three major physical node models:
 
-* **Wind Circulation Layer**
-* **Optical Nervous Layer**
+* **Wind Node**
+* **Optical Node**
+* **Hybrid Wind/Optical Node**
 
-Together, these layers describe how Earth Brain OS can become a physically sustainable, local-first, distributed AI body.
+Together, these models describe how Earth Brain OS can become a physically sustainable, local-first, distributed AI body.
 
 ---
 
@@ -164,16 +171,66 @@ The Optical Nervous Layer prevents Earth Brain OS from becoming unnecessarily ce
 
 ---
 
-## Relationship Between Wind and Optical Layers
+## Hybrid Wind/Optical Node
 
-The two layers are distinct but interdependent.
+The **Hybrid Wind/Optical Node** combines internal physical circulation and external nervous coordination.
+
+A Hybrid Node may function as:
+
+* a local AI workstation
+* an edge AI server
+* an AI router with onboard inference
+* a NAS with AI acceleration
+* a quiet execution node
+* a field hybrid node
+
+Its core principle is:
+
+> route only what the body can sustain.
+
+A Hybrid Node does not only ask:
 
 ```text
-Wind Circulation Layer
+Can I compute?
+```
+
+or:
+
+```text
+Where should this signal go?
+```
+
+It asks:
+
+```text
+Can I compute, breathe, route, remember, and recover without destabilizing the local system?
+```
+
+This makes Hybrid Nodes the first integrated physical organs in Earth Brain OS.
+
+They combine:
+
+* Wind awareness
+* Optical routing
+* local execution
+* memory proximity
+* fallback behavior
+* trace logging
+* rest and recovery
+
+---
+
+## Relationship Between the Three Node Types
+
+```text
+Wind Node
 = internal breathing and physical stability
 
-Optical Nervous Layer
+Optical Node
 = external connection and signal coordination
+
+Hybrid Node
+= integrated execution, circulation, routing, memory, and recovery
 ```
 
 Wind answers:
@@ -188,21 +245,19 @@ Optical answers:
 Should the signal go there?
 ```
 
-Together, they form the first physical body model of Earth Brain OS.
+Hybrid answers:
 
 ```text
-Wind
-= breath, heat, airflow, sound, power
-
-Optical
-= signal, memory, connection, routing, coordination
+Should this node execute locally, reroute, reduce, rest, or escalate?
 ```
+
+Together, they form the first validated physical body model of Earth Brain OS.
 
 Without wind, intelligence overheats.
 
 Without optical nerves, intelligence fragments.
 
-Without local-first routing, intelligence becomes centralized, expensive, and brittle.
+Without hybrid nodes, real local AI infrastructure cannot be modeled accurately.
 
 ---
 
@@ -232,6 +287,16 @@ This repository describes physical infrastructure using an organ-based model.
 | Execution Organ              | Local AI compute node selected for task execution    |
 | Cloud Interface Organ        | Gateway to external cloud infrastructure             |
 
+### Hybrid Organs
+
+| Organ                            | Meaning                                                     |
+| -------------------------------- | ----------------------------------------------------------- |
+| Execution and Coordination Organ | Node that both executes tasks and coordinates nearby nodes  |
+| Routing and Inference Organ      | Node that routes signals and performs lightweight inference |
+| Memory and Execution Organ       | Node that combines local memory and compute                 |
+| Edge Coordination Organ          | Node that coordinates nearby edge devices                   |
+| Hybrid Circulation Nervous Organ | Node that combines physical circulation and nervous routing |
+
 This model allows AI infrastructure to be described as a living circulation and nervous system rather than a collection of disconnected devices.
 
 ---
@@ -245,13 +310,16 @@ This model allows AI infrastructure to be described as a living circulation and 
 ├── docs/
 │   ├── physical-circulation-overview.md
 │   ├── wind-circulation-layer.md
-│   └── optical-nervous-layer.md
+│   ├── optical-nervous-layer.md
+│   └── hybrid-wind-optical-node.md
 ├── schemas/
 │   ├── wind-node.schema.json
-│   └── optical-node.schema.json
+│   ├── optical-node.schema.json
+│   └── hybrid-node.schema.json
 ├── examples/
 │   ├── wind-node.example.yaml
-│   └── optical-node.example.yaml
+│   ├── optical-node.example.yaml
+│   └── hybrid-node.example.yaml
 ├── scripts/
 │   └── validate_examples.py
 └── .github/
@@ -306,6 +374,23 @@ It defines:
 * nervous trace logging
 * Optical Node lifecycle states
 
+### `docs/hybrid-wind-optical-node.md`
+
+Detailed specification of the Hybrid Wind/Optical Node model.
+
+It defines:
+
+* hybrid physical AI nodes
+* combined Wind and Optical responsibilities
+* local execution
+* circulation awareness
+* nervous routing
+* memory proximity
+* fallback and escalation
+* rest and recovery
+* Hybrid Node lifecycle states
+* Hybrid Trace concepts
+
 ---
 
 ## Schemas
@@ -347,6 +432,23 @@ An Optical Node is a routing, memory, or coordination node described by:
 * lifecycle state
 * nervous trace policy
 
+### `schemas/hybrid-node.schema.json`
+
+JSON Schema for describing a **Hybrid Wind/Optical Node**.
+
+A Hybrid Node is a physical AI node described by:
+
+* node identity
+* hybrid role
+* Wind profile
+* Optical profile
+* execution policy
+* routing policy
+* memory policy
+* fallback policy
+* trace policy
+* lifecycle state
+
 ---
 
 ## Examples
@@ -376,6 +478,19 @@ It represents a local AI router that coordinates nearby Wind Nodes through:
 * fallback routing
 * cloud escalation only when needed
 * nervous trace logging
+
+### `examples/hybrid-node.example.yaml`
+
+Example Hybrid Node record.
+
+It represents a local AI workstation that combines:
+
+* local execution
+* Wind state awareness
+* optical coordination
+* memory proximity
+* fallback policy
+* hybrid trace logging
 
 ---
 
@@ -422,28 +537,32 @@ The workflow checks:
 * Python syntax
 * Wind Node example validation against JSON Schema
 * Optical Node example validation against JSON Schema
+* Hybrid Node example validation against JSON Schema
 
 ---
 
 ## Current Version
 
 ```text
-v0.2.0-candidate
-Optical Nervous Architecture
+v0.3.0-candidate
+Hybrid Wind/Optical Node Architecture
 ```
 
 This version introduces:
 
-* Optical Nervous Layer documentation
-* Optical Node JSON Schema
-* Optical Node YAML example
-* validation support for both Wind Node and Optical Node examples
+* Hybrid Wind/Optical Node documentation
+* Hybrid Node JSON Schema
+* Hybrid Node YAML example
+* validation support for Wind Node, Optical Node, and Hybrid Node examples
 
 It builds on:
 
 ```text
 v0.1.0-candidate
 Physical Circulation Layer for Earth Brain OS
+
+v0.2.0-candidate
+Optical Nervous Architecture
 ```
 
 ---
@@ -492,6 +611,14 @@ Local nodes should be preferred when sustainable, but escalation remains possibl
 
 Routing decisions should be observable, traceable, and learnable.
 
+### 11. Route Only What the Body Can Sustain
+
+Hybrid Nodes should not accept or route work without considering physical state.
+
+### 12. Rest Is Structural Governance
+
+Cooldown and rest are part of the physical operating model.
+
 ---
 
 ## Non-Goals
@@ -508,7 +635,7 @@ This repository does not define:
 * a replacement for existing internet protocols
 * a replacement for Earth Brain OS core schemas
 
-Instead, it defines a structural vocabulary for describing physical circulation and optical nervous coordination in AI civilization systems.
+Instead, it defines a structural vocabulary for describing physical circulation, optical nervous coordination, and hybrid local AI organs in AI civilization systems.
 
 ---
 
@@ -516,9 +643,9 @@ Instead, it defines a structural vocabulary for describing physical circulation 
 
 Possible next versions may add:
 
-* Hybrid Wind/Optical Node model
 * circulation outcome logs
 * nervous routing outcome logs
+* hybrid trace records
 * thermal-acoustic routing policies
 * breathing reasoning node profiles
 * Earth Brain OS integration records
@@ -538,12 +665,16 @@ Optical Nervous Architecture adds one more:
 
 > Can the system coordinate without unnecessary centralization?
 
+Hybrid Node Architecture adds the next:
+
+> Can the system execute, route, remember, and recover as one local body?
+
 A system that cannot breathe becomes hot, loud, expensive, centralized, and brittle.
 
-A system that can breathe and coordinate becomes quiet, local, modular, resilient, and sustainable.
+A system that can breathe, coordinate, and recover becomes quiet, local, modular, resilient, and sustainable.
 
 Earth Brain OS is not only an intelligence architecture.
 
 It is a body.
 
-And every body needs circulation and nerves.
+And every body needs circulation, nerves, and integrated organs.
