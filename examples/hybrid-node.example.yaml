@@ -10,14 +10,8 @@ circulation_role: "compute_lung"
 thermal_state: "stable"
 acoustic_state: "quiet"
 power_stability: "stable"
-airflow_state: "stable"
-cooling_method: "hybrid_airflow"
 burst_allowed: true
 cooldown_required_after_burst: true
-rest_required: false
-wind_notes:
-- "This node can perform sustained local inference under stable thermal and acoustic conditions."
-- "Burst reasoning is allowed, but cooldown should be required after heavy execution."
 
 optical_profile:
 nervous_role: "local_nervous_ganglion"
@@ -26,21 +20,12 @@ secondary_connection: "wifi_7"
 latency_class: "low"
 bandwidth_class: "high"
 local_discovery_supported: true
-optical_path_supported: false
-cloud_latency_penalty: "medium"
-optical_notes:
-- "This node can coordinate nearby Wind Nodes through local-first routing."
-- "Cloud escalation is available but should not be treated as the default path."
 
 execution_policy:
 prefer_local_execution: true
 allow_burst_execution: true
 reduce_depth_when_strained: true
 require_stable_wind_state: true
-delay_non_urgent_tasks_when_strained: true
-execution_notes:
-- "Local execution should be preferred when Wind state is stable."
-- "When thermal or acoustic pressure rises, reasoning depth should be reduced."
 
 routing_policy:
 prefer_local_nodes: true
@@ -48,35 +33,16 @@ prefer_memory_near_compute: true
 avoid_unnecessary_data_movement: true
 escalate_to_cloud_when_needed: true
 cloud_is_default: false
-respect_wind_circulation_state: true
-routing_notes:
-- "Routing decisions should consider both signal path and physical circulation state."
-- "Nearby stable nodes should be preferred before remote escalation."
 
 memory_policy:
 nearest_memory_node: "nas-memory-01"
 memory_role: "coordination_memory"
 remote_memory_allowed: true
 memory_privacy_boundary: "trusted_local_network"
-memory_notes:
-- "Nearby memory should be used before remote memory when possible."
-- "Memory access should remain close to compute unless escalation is justified."
 
 fallback_policy:
-fallback_paths:
-- path_id: "quiet-edge-node-01"
-fallback_role: "local_execution_backup"
-fallback_priority: "secondary"
-- path_id: "secondary-router-01"
-fallback_role: "local_network_backup"
-fallback_priority: "tertiary"
-- path_id: "cloud-gateway-01"
-fallback_role: "remote_escalation"
-fallback_priority: "last_resort"
+fallback_paths: []
 escalation_requires_trace: true
-fallback_notes:
-- "Fallback should be used when local execution would create physical stress."
-- "Cloud escalation must be traceable and should remain a last-resort path."
 
 trace_policy:
 log_execution_decisions: true
@@ -84,16 +50,7 @@ log_routing_decisions: true
 log_wind_state: true
 log_memory_path: true
 log_cloud_escalation: true
-log_rest_required: true
-trace_notes:
-- "Hybrid decisions should record execution, routing, memory, and circulation state."
-- "Trace records should help future routing and cooldown decisions."
 
 lifecycle_state: "available"
 
-notes:
-
-- "This Hybrid Node represents a local AI workstation that combines Wind and Optical responsibilities."
-- "It can execute local inference, coordinate nearby nodes, access nearby memory, and escalate only when needed."
-- "It should route only what the body can sustain."
 
